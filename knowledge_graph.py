@@ -17,8 +17,6 @@ def build_knowledge_graph(entities, clusters):
     for idx, entity in enumerate(entities):
         G.add_node(entity['word'], cluster=clusters[idx])
     
-    # 这里可以根据一些规则或相似度为实体之间添加边
-    # 假设相邻的实体在相同聚类中会有边
     for i in range(len(entities) - 1):
         if clusters[i] == clusters[i + 1]:
             G.add_edge(entities[i]['word'], entities[i + 1]['word'])
