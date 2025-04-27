@@ -1,0 +1,28 @@
+
+### 3. `entity_extraction.py`
+```python
+from transformers import pipeline
+import spacy
+
+def extract_entities(logs: str):
+    """
+    使用预训练的NER模型从日志中抽取实体。
+    
+    Args:
+    logs (str): 输入日志文本
+    
+    Returns:
+    list: 包含抽取实体的列表，每个实体是一个字典，包含`word`、`entity`等信息
+    """
+    # 使用transformers库加载NER模型
+    nlp = pipeline("ner", model="dbmdz/bert-large-cased-finetuned-conll03-english")
+    entities = nlp(logs)
+    
+    # 使用Spacy进行基本的分词和句法分析
+    spacy_nlp = spacy.load("en_core_web_sm")
+    doc = spacy_nlp(logs)
+    
+    # 提取名词短语等
+    noun_phrases = [chunk.text for chunk in doc.noun_chunks]
+    
+    return entities, noun_phrases
