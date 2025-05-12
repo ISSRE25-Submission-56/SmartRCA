@@ -1,0 +1,77 @@
+# ----- General -----
+project_name: SmartRCA
+random_seed: 42
+log_level: INFO
+output_dir: outputs/
+
+# ----- Dataset Config -----
+dataset:
+  name: CMCC  # or ZTE
+  path: data/cmcc/
+  log_file: logs.jsonl
+  label_file: labels.json
+  use_cache: true
+
+# ----- Entity Extraction -----
+entity_extraction:
+  method: corenlp  # or spacy
+  language: en
+  stopwords_file: resources/stopwords.txt
+  min_entity_len: 2
+
+# ----- Entity Embedding -----
+embedding:
+  model: bert-base-uncased
+  max_length: 64
+  batch_size: 32
+  device: cuda  # or cpu
+  save_path: embeddings/entity_embeddings.npy
+
+# ----- Clustering & Alignment -----
+alignment:
+  clustering_method: hdbscan  # or kmeans
+  min_cluster_size: 2
+  normalize_names: true
+  output_mapping: outputs/entity_alignment.json
+
+# ----- Knowledge Graph -----
+knowledge_graph:
+  build_from_logs: true
+  kg_output_file: outputs/kg.edgelist
+  entity_mapping_file: outputs/entity_alignment.json
+  relation_type: cooccur  # or semantic
+
+# ----- LLM Summary -----
+llm_summary:
+  model: gpt-3.5-turbo
+  max_tokens: 512
+  summary_output_file: outputs/llm_summaries.jsonl
+  enable_summary_cache: true
+
+# ----- Entity Recall -----
+entity_recall:
+  top_k: 5
+  similarity_metric: cosine
+  recall_output_file: outputs/recall_results.json
+
+# ----- RCA Prompting -----
+rca_prompt:
+  use_entity_guided_prompt: true
+  template_file: prompts/rca_prompt_template.txt
+  response_max_tokens: 512
+  use_openai_api: true
+  openai:
+    model: gpt-3.5-turbo
+    temperature: 0.3
+    api_key_env: OPENAI_API_KEY
+
+# ----- Evaluation -----
+evaluation:
+  metrics: [precision, recall, f1]
+  output_file: outputs/eval_metrics.json
+
+# ----- Visualization -----
+visualization:
+  enable: true
+  output_dir: outputs/figures/
+  format: pdf
