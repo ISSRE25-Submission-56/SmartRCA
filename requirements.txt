@@ -1,0 +1,38 @@
+# Core Python dependencies
+numpy==1.24.3
+pandas==1.5.3
+scikit-learn==1.2.2
+
+# NLP and Transformers
+transformers==4.37.2
+sentence-transformers==2.2.2
+nltk==3.8.1
+spacy==3.7.2
+
+# LLM & Prompt Engineering
+openai==1.14.3
+tiktoken==0.6.0
+
+# Visualization
+matplotlib==3.7.2
+seaborn==0.12.2
+
+# Knowledge Graph & Clustering
+networkx==3.1
+faiss-cpu==1.7.4
+hdbscan==0.8.33
+
+# Utility and system
+tqdm==4.66.2
+pyyaml==6.0.1
+regex==2023.12.25
+
+# Notebook (optional, for analysis)
+ipykernel==6.29.4
+jupyterlab==4.1.5
+
+# Knowledge Graph Construction
+rdflib==7.0.0               
+py2neo==2021.2.4             
+spacy-lookups-data==1.0.5     
+igraph==0.10.8               
