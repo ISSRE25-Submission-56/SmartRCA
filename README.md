@@ -4,9 +4,9 @@ This repository contains the official implementation of our paper:
 **# SmartRCA: Bridging Structured Knowledge Graph and Large Language Model for Explainable Fault Root Cause Analysis in Logs**
 
 ## 🔧 Features
-- Entity normalization via BERT embedding + clustering
+- Entity normalization via BigLog embedding + clustering
 - Context-aware entity recall using LLM-generated summaries
-- LLM-based classification with entity-augmented prompting
+- LLM-based RCA with entity-augmented prompting
 
 ## 📁 Project Structure
 - `scripts/`: core pipeline modules
